@@ -9,26 +9,27 @@ Graph::Graph(int maxn)
 	//vector<vector<unsigned> > *adj_listp = NULL;
 	this->adj_listp = NULL;
 	adj_listp = new vector<vector<unsigned> >(maxn);
-	cerr<<adj_listp<<endl;
+	//cerr<<adj_listp<<endl;
 	if(adj_listp == NULL)
 	{
 		cerr<<"error to alloc for adj_listp"<<endl;
 	}
-	cerr<<adj_listp->size()<<endl;
-	cerr<<(*adj_listp)[0].size()<<endl;
-	cerr<<(*adj_listp)[1].size()<<endl;
-	cerr<<(*adj_listp)[2].size()<<endl;
-	cerr<<(*adj_listp)[10000000].size()<<endl;
+	//cerr<<adj_listp->size()<<endl;
+	//cerr<<(*adj_listp)[0].size()<<endl;
+	//cerr<<(*adj_listp)[1].size()<<endl;
+	//cerr<<(*adj_listp)[2].size()<<endl;
+	//cerr<<(*adj_listp)[10000000].size()<<endl;
 	//vector<unsigned> *degreep = NULL;
 	this->degreep = NULL;
 	degreep = new vector<unsigned>(maxn, 0);
-	cerr<<degreep<<endl;
+	//cerr<<degreep<<endl;
 	if(degreep == NULL)
 	{
 		cerr<<"error to alloc for degreep"<<endl;
 	}
 	//cerr<<"check again: "<<adj_listp->size()<<endl;
 }
+
 Graph::~Graph()
 {
 	delete adj_listp;

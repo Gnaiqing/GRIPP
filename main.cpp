@@ -7,10 +7,13 @@ void check(unsigned node_num,unsigned check_num,Graph * gp,Gripp * grp)
 	int con = 0,error = 0;
 	for(unsigned i = 0;i < check_num;i++)
 	{
+		//cout<<"check the "<<i<<"-th pair"<<endl;
 		unsigned u = rand() % node_num;
 		unsigned v = rand() % node_num;
 		bool b1 = gp->CanReach(u,v);
+		//cout<<"search in graph"<<endl;
 		bool b2 = grp->CanReach(u,v);
+		//cout<<"search in gripp"<<endl;
 		if(b1 != b2)
 		{
 			cout<<"Diff:"<<u<<' '<<v
@@ -25,22 +28,25 @@ void check(unsigned node_num,unsigned check_num,Graph * gp,Gripp * grp)
 /* check the speed of gripp reachability */
 void checkspeed(unsigned node_num,unsigned check_num,Gripp * grp)
 {
+	unsigned conpair = 0;
 	for(unsigned i = 0;i < check_num;i++)
 	{
 		unsigned u = rand() % node_num;
 		unsigned v = rand() % node_num;
 		bool b = grp->CanReach(u,v);
+		if(b) conpair ++;
 	}
+	cout<<"Connected Pair: "<<conpair<<endl;
 }
-int main()
+int main(int argc, char** argv)
 {
 	Graph * gp = new Graph(Util::MAX_NODE);
-	string filename;
+	string filename = argv[1];
 	cout << "Gripp reachability program" << endl;
 	cout << "max nodes:"<<Util::MAX_NODE <<
 		" max edges:" << Util::MAX_EDGE << endl;
-	cout << "Please enter file name:"<<endl;
-	cin >> filename;
+	//cout << "Please enter file name:"<<endl;
+	//cin >> filename;
 	cout << "Loading file to graph"<<endl;
 	gp->load(filename.c_str());
 	gp->disp();
@@ -58,14 +64,14 @@ int main()
 		 <<(double)(finish - start)/CLOCKS_PER_SEC<<"s"<<endl;
 	grp->display();
 	//system("pause");
-
-	cout <<"Please enter num of pairs to be checked for Gripp's correctness"<<endl;
 	int checknum;
+	/*
+	cout <<"Please enter num of pairs to be checked for Gripp's correctness"<<endl;
 	cin >> checknum;
 	cout << "Checking for correctness" << endl;
 	check(gp->getN(),checknum,gp,grp);
 	//system("pause");
-
+	*/
 	cout <<"Please enter num of pairs to be checked for Gripp's speed"<<endl;
 	cin >> checknum;
 	cout << "Testing speed of Gripp" << endl;
@@ -84,3 +90,4 @@ int main()
 
 	return 0;
 }
+
